@@ -132,7 +132,7 @@ class CreateKeyboardProduct implements DataPatchInterface
     {
         $product = $this->productInterfaceFactory->create();
 
-        if ($product->getIdBySku('grip-trainer')) {
+        if ($product->getIdBySku('352168')) {
             return;
         }
 
