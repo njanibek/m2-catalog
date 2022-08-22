@@ -70,9 +70,9 @@ class CreateKeyboardProduct implements DataPatchInterface
     protected EavSetup $eavSetup;
 
     /**
-     * @var array
+     * @var CategoryLinkManagementInterface
      */
-    protected array $sourceItems = [];
+    protected CategoryLinkManagementInterface $categoryLink;
 
     /**
      * @var CategoryCollectionFactory
@@ -80,8 +80,12 @@ class CreateKeyboardProduct implements DataPatchInterface
     protected CategoryCollectionFactory $categoryCollectionFactory;
 
     /**
+     * @var array
+     */
+    protected array $sourceItems = [];
+
+    /**
      * Migration patch constructor.
-     *
      * @param ProductInterfaceFactory $productInterfaceFactory
      * @param ProductRepositoryInterface $productRepository
      * @param SourceItemInterfaceFactory $sourceItemFactory
@@ -90,17 +94,18 @@ class CreateKeyboardProduct implements DataPatchInterface
      * @param StoreManagerInterface $storeManager
      * @param EavSetup $eavSetup
      * @param CategoryLinkManagementInterface $categoryLink
+     * @param CategoryCollectionFactory $categoryCollectionFactory
      */
     public function __construct(
-        ProductInterfaceFactory         $productInterfaceFactory,
-        ProductRepositoryInterface      $productRepository,
-        State                           $appState,
-        StoreManagerInterface           $storeManager,
-        EavSetup                        $eavSetup,
-        SourceItemInterfaceFactory      $sourceItemFactory,
-        SourceItemsSaveInterface        $sourceItemsSaveInterface,
+        ProductInterfaceFactory $productInterfaceFactory,
+        ProductRepositoryInterface $productRepository,
+        State $appState,
+        StoreManagerInterface $storeManager,
+        EavSetup $eavSetup,
+        SourceItemInterfaceFactory $sourceItemFactory,
+        SourceItemsSaveInterface $sourceItemsSaveInterface,
         CategoryLinkManagementInterface $categoryLink,
-        CategoryCollectionFactory       $categoryCollectionFactory
+        CategoryCollectionFactory $categoryCollectionFactory
     ) {
         $this->appState = $appState;
         $this->productInterfaceFactory = $productInterfaceFactory;
